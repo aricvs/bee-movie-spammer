@@ -1,9 +1,16 @@
+import sys
+import os
 import time
 import pywhatkit
 
 
 def get_script_lines():
-    with open("script.txt", "r") as file:
+    if hasattr(sys, "_MEIPASS"):
+        script_path = os.path.join(sys._MEIPASS, "script.txt")
+    else:
+        script_path = "script.txt"
+
+    with open(script_path, "r") as file:
         script = [line.strip() for line in file.readlines()]
     return script
 
